@@ -41,28 +41,29 @@ In fast-paced Quick-Commerce (Q-Commerce) companies like **Blinkit**, operationa
 
 ```mermaid
 graph TD
-    subgraph Raw Data Ingestion
-        A[blinkit_orders.csv] -->|ETL Ingest| D[(PostgreSQL: blinkit)]
+
+    subgraph Raw_Data_Ingestion
+        A[blinkit_orders.csv] -->|ETL Ingest| D[(PostgreSQL blinkit)]
         B[blinkit_marketing_performance.csv] -->|ETL Ingest| D
         C[blinkit_customer_feedback.csv] -->|ETL Ingest| D
     end
 
-    subgraph Database Layer (SQL)
+    subgraph Database_Layer_SQL
         D -->|SQL Join & CTE Aggregation| E[Master Analytical View]
     end
 
-    subgraph Business Intelligence Layer
+    subgraph Business_Intelligence_Layer
         E -->|ROAS & Marketing ROI Analysis| F[Streamlit App Backend]
-        D -->|Train Classifier| G[ML Model: Random Forest]
+        D -->|Train Classifier| G[ML Model Random Forest]
         D -->|TF-IDF Semantic Retriever| H[RAG Search Pipeline]
     end
 
-    subgraph Presentation Layer (Streamlit UI)
-        F -->|Render| I[Marketing ROI & KPI Dashboard]
+    subgraph Presentation_Layer_Streamlit_UI
+        F -->|Render| I[Marketing ROI KPI Dashboard]
         G -->|Input Parameters| J[Proactive Delay Risk Calculator]
         H -->|User Prompt + Context| K[GenAI Chat Assistant]
     end
-    
+
     K -->|Query LLM| L[Google Gemini API / Fallback Summarizer]
 ```
 
@@ -230,7 +231,7 @@ Under the **AI Business Assistant** tab in the Streamlit app, we have implemente
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/blinkit/business-decision-platform.git
+git clone https://github.com/dineshkumar2029/blinkit-business-platform.git
 cd business-decision-platform
 ```
 
@@ -256,3 +257,9 @@ python src/train_model.py
 streamlit run src/app.py
 ```
 Open your browser and navigate to `http://localhost:8501`. Input your Gemini API key in the sidebar to activate Generative AI, or use the default local intelligence mode!
+
+# Author
+
+Dineshkumar 
+
+---
